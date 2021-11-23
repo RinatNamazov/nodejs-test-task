@@ -11,7 +11,7 @@ npm install https://github.com/RinatNamazov/nodejs-test-task
 Edit the .env file
 ```bash
 # First we set up the database
-npm run start migrate up
+npm run migrate up
 
 # development
 npm run start
