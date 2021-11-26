@@ -17,11 +17,14 @@ import { TagService } from './tag.service';
 import { CreateTagDto } from './dto/create-tag.dto';
 import { UpdateTagDto } from './dto/update-tag.dto';
 import { JwtAuthGuard } from '../auth/jwt-auth.guard';
+import { ApiOperation, ApiTags } from '@nestjs/swagger';
 
+@ApiTags('tag')
 @Controller('tag')
 export class TagController {
   constructor(private readonly tagService: TagService) {}
 
+  @ApiOperation({ summary: 'Create tag' })
   @UseGuards(JwtAuthGuard)
   @Post()
   async create(@Request() req, @Body() createTagDto: CreateTagDto) {
@@ -32,12 +35,14 @@ export class TagController {
     return result;
   }
 
+  @ApiOperation({ summary: 'Get tag' })
   @UseGuards(JwtAuthGuard)
   @Get(':id')
   findOne(@Param('id', ParseIntPipe) id: number) {
     return this.tagService.findOne(+id);
   }
 
+  @ApiOperation({ summary: 'Get a list of all tags' })
   @UseGuards(JwtAuthGuard)
   @Get()
   findAll(
@@ -51,6 +56,7 @@ export class TagController {
     return this.tagService.findAll(sortByOrder, sortByName, offset, length);
   }
 
+  @ApiOperation({ summary: 'Update tag' })
   @UseGuards(JwtAuthGuard)
   @Put(':id')
   update(
@@ -61,6 +67,7 @@ export class TagController {
     return this.tagService.update(req.user.uid, id, updateTagDto);
   }
 
+  @ApiOperation({ summary: 'Delete tag' })
   @UseGuards(JwtAuthGuard)
   @Delete(':id')
   remove(@Request() req, @Param('id', ParseIntPipe) id: number) {
