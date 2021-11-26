@@ -5,6 +5,7 @@
 Download the project source.
 ```bash
 $ git clone https://github.com/RinatNamazov/nodejs-test-task
+$ npm install
 ```
 Edit the information about connecting to PostgreSQL in `.env` file.
 

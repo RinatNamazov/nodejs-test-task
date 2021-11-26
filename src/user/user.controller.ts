@@ -27,7 +27,10 @@ export class UserController {
   }
 
   @ApiOperation({ summary: 'Change current user information' })
-  @ApiResponse({ status: HttpStatus.CONFLICT, description: 'Email or nickname already used by someone' })
+  @ApiResponse({
+    status: HttpStatus.CONFLICT,
+    description: 'Email or nickname already used by someone',
+  })
   @UseGuards(JwtAuthGuard)
   @Put()
   update(@Request() req, @Body() updateUserDto: UpdateUserDto) {

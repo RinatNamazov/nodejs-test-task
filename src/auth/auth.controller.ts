@@ -11,8 +11,14 @@ import { AuthService } from './auth.service';
 import { JwtAuthGuard } from './jwt-auth.guard';
 import { CreateUserDto } from '../user/dto/create-user.dto';
 import { LocalAuthGuard } from './local-auth.guard';
-import { ApiCreatedResponse, ApiOkResponse, ApiOperation, ApiResponse, ApiTags, ApiUnauthorizedResponse } from '@nestjs/swagger';
-
+import {
+  ApiCreatedResponse,
+  ApiOkResponse,
+  ApiOperation,
+  ApiResponse,
+  ApiTags,
+  ApiUnauthorizedResponse,
+} from '@nestjs/swagger';
 
 @ApiTags('auth')
 @Controller()
@@ -20,7 +26,10 @@ export class AuthController {
   constructor(private readonly authService: AuthService) {}
 
   @ApiOperation({ summary: 'Registers the user' })
-  @ApiResponse({ status: HttpStatus.CONFLICT, description: 'User already exists' })
+  @ApiResponse({
+    status: HttpStatus.CONFLICT,
+    description: 'User already exists',
+  })
   @ApiCreatedResponse()
   @Post('signin') // Could it be an error in the test task? It must be a signup.
   create(@Body() createUserDto: CreateUserDto) {
