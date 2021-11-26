@@ -2,26 +2,31 @@
 
 ## Installation
 
-Use the package manager [npm](https://www.npmjs.com/get-npm) to install this project.
+Download the project source.
 ```bash
-npm install https://github.com/RinatNamazov/nodejs-test-task
+$ git clone https://github.com/RinatNamazov/nodejs-test-task
+```
+Edit the information about connecting to PostgreSQL in `.env` file.
+
+Set up the database.
+```bash
+$ npm run migrate up
 ```
 
 ## Running the app
-Edit the .env file
-```bash
-# First we set up the database
-npm run migrate up
 
+```bash
 # development
-npm run start
+$ npm run start
 
 # watch mode
-npm run start:dev
+$ npm run start:dev
 
 # production mode
-npm run start:prod
+$ npm run start:prod
 ```
+
+The site is accessible on `localhost:3000`, documentation at `localhost:3000/docs`.
 
 ## License
 
